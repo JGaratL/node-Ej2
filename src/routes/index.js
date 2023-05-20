@@ -34,7 +34,7 @@ const insertMessage = async (message) => {
 
 const insertMessages = async (messages) => {
     console.log("Creating "+messages.length+" docs from API to insert into MongoDB");
-    var messagesToInsert = [];
+    let messagesToInsert = [];
     for (let i=0; i<messages.length; i++) {
         console.log("Creating document "+i);
         const message = {
@@ -111,7 +111,7 @@ router
     .get('/messages/init', async(req, res) => {
         try {
             const response = await getAllMessagesFromAPIMock();
-            var messages_api = await response.json();
+            let messages_api = await response.json();
             await clearDB();
             const messages = await insertMessages(messages_api);
             res.status(200).json(messages);
